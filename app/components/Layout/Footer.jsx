@@ -111,7 +111,7 @@ class Footer extends React.Component {
     checkNewVersionAvailable() {
         if (__ELECTRON__) {
             fetch(
-                "https://api.github.com/repos/bitshares/bitshares-ui/releases/latest"
+                "https://api.github.com/repos/autradex/autradex-ui/releases/latest"
             )
                 .then(res => {
                     return res.json();

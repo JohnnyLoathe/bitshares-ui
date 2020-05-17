@@ -137,9 +137,9 @@ export function getMyMarketsQuotes() {
             //"USD"
         ],
         autradexTokens: [
-        "autradex.aus",
-        "autradex.btc",
-		"autradex"
+            "autradex.aus",
+            "autradex.btc",
+            "autradex"
         ],
         otherTokens: ["CVCOIN", "HERO", "OCT", "HERTZ", "YOYOW"]
     };
@@ -161,7 +161,10 @@ export function getFeaturedMarkets(quotes = []) {
         return [["USD", "TEST"]];
     }
     return [
-        [BTS]
+        ["BTS", "AUTX"],
+
+        ["AUTRADEX", "AUTRADEX"],
+        ["AUTRADEX", "AUTRADEX.AUS"]
     ].filter(a => {
         if (!quotes.length) return true;
         return quotes.indexOf(a[0]) !== -1;

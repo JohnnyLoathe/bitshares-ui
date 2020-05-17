@@ -1,14 +1,15 @@
 {
-    "name": "BitShares2-light",
-    "version": "3.3.191120-rc1",
-    "description": "Reference UI to showcase all features of the BitShares blockchain.",
-    "homepage": "https://github.com/bitshares/bitshares-ui",
-    "author": "BitShares UI Worker <ui-dev@bitshares.org>",
+    "name": "AUTRADEX-light",
+    "version": "0.1.11",
+    "description": "Reference UI to showcase all features of the AUTRADEX blockchain.",
+    "homepage": "https://github.com/autradex/autradex-ui",
+    "author": "BitShares UI Worker - Modified by Farsider350",
     "contributors": [
         "Sigve Kvalsvik <kvalsvik.crypto@gmail.com>",
         "James Calfee",
         "Dan Larimer",
-        "Valentine Zavgorodnev <valentine.zavgorodnev@gmail.com>"
+        "Valentine Zavgorodnev <valentine.zavgorodnev@gmail.com>",
+        "Farsider350 <farsider350@protonmail.com>"
     ],
     "license": "MIT",
     "engines": {
@@ -18,7 +19,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/bitshares/bitshares-ui"
+        "url": "git://github.com/autradex/autradex-ui"
     },
     "main": "build/electron/index.js",
     "scripts": {
@@ -90,8 +91,8 @@
     },
     "browsersList": "electron 1.7",
     "build": {
-        "productName": "BitShares",
-        "appId": "org.bitshares.graphene",
+        "productName": "AUTRADEX",
+        "appId": "org.autradex.market",
         "files": [
             "build/electron",
             "!node_modules"
