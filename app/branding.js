@@ -112,7 +112,7 @@ export function getMyMarketsBases() {
     if (_isTestnet()) {
         return ["TEST"];
     }
-    return ["BTS", "AUTRADEX.BTC", "AUTRADEX.AUS", "AUTRADEX"];
+    return ["BTS", "BTC", "AUS", "AUTX"];
 }
 
 /**
