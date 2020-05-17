@@ -7,7 +7,7 @@ import BalanceComponent from "components/Utility/BalanceComponent";
 import counterpart from "counterpart";
 import AmountSelector from "components/Utility/AmountSelector";
 import AccountActions from "actions/AccountActions";
-import {validateAddress, WithdrawAddresses} from "common/gdexMethods";
+import {validateAddress, WithdrawAddresses} from "common/autradexMethods";
 import {connect} from "alt-react";
 import SettingsStore from "stores/SettingsStore";
 import {ChainStore} from "bitsharesjs";
@@ -17,7 +17,7 @@ import {debounce} from "lodash-es";
 import PropTypes from "prop-types";
 import {Button, Modal} from "bitshares-ui-style-guide";
 
-class GdexWithdrawModal extends React.Component {
+class AutradexWithdrawModal extends React.Component {
     static propTypes = {
         account: ChainTypes.ChainAccount.isRequired,
         issuer: ChainTypes.ChainAccount.isRequired,
@@ -960,10 +960,10 @@ class GdexWithdrawModal extends React.Component {
     }
 }
 
-GdexWithdrawModal = BindToChainState(GdexWithdrawModal);
+AutradexWithdrawModal = BindToChainState(AutradexWithdrawModal);
 
 export default connect(
-    GdexWithdrawModal,
+    AutradexWithdrawModal,
     {
         listenTo() {
             return [SettingsStore];
