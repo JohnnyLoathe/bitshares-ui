@@ -524,7 +524,7 @@ class AccountPortfolioList extends React.Component {
 
     getHeader(atLeastOneHas) {
         let {settings} = this.props;
-        let {shownAssets} = this.state;
+        let {shownAssets} = this.props;
 
         const preferredUnit =
             settings.get("unit") || this.props.core_asset.get("symbol");
@@ -754,11 +754,9 @@ class AccountPortfolioList extends React.Component {
             {
                 className: "column-hide-medium",
                 title: <Translate content="exchange.buy" />,
-                customizable: atLeastOneHas.buy
-                    ? undefined
-                    : {
-                          default: false
-                      },
+                customizable: {
+                    default: false
+                },
                 dataIndex: "buy",
                 align: "center",
                 render: item => {
@@ -782,11 +780,9 @@ class AccountPortfolioList extends React.Component {
                 ) : (
                     <Translate content="modal.deposit.submit" />
                 ),
-                customizable: atLeastOneHas.deposit
-                    ? undefined
-                    : {
-                          default: false
-                      },
+                customizable: {
+                    default: false
+                },
                 dataIndex: "deposit",
                 align: "center",
                 render: item => {
@@ -796,11 +792,9 @@ class AccountPortfolioList extends React.Component {
             {
                 className: "column-hide-medium",
                 title: <Translate content="modal.withdraw.submit" />,
-                customizable: atLeastOneHas.withdraw
-                    ? undefined
-                    : {
-                          default: false
-                      },
+                customizable: {
+                    default: false
+                },
                 dataIndex: "withdraw",
                 align: "center",
                 render: item => {
@@ -960,7 +954,8 @@ class AccountPortfolioList extends React.Component {
             /* Table content */
             directMarketLink = notCore ? (
                 <Link
-                    to={`/market/${asset.get("symbol")}_${preferredMarket}`}
+                    //to={`/market/${asset.get("symbol")}_${preferredMarket}`}
+                    to={`/market/${asset.get("symbol")}_BTS`}
                     onClick={() => MarketsActions.switchMarket()}
                 >
                     <Icon

@@ -98,9 +98,9 @@ export function getUnits() {
 
 export function getDefaultMarket() {
     if (_isTestnet()) {
-        return "USD_TEST";
+        return "BTC_TEST";
     }
-    return "USD_BTS";
+    return "BTS_AUTRADEX.BTC";
 }
 
 /**
@@ -225,6 +225,6 @@ export function getConfigurationAsset() {
     return {
         symbol: assetSymbol,
         explanation:
-            "This asset is used for decentralized configuration of the BitShares UI placed under bitshares.org."
+            "This asset is used for decentralized configuration of the AUTRADEX UI placed under autradex.systems."
     };
 }

@@ -28,8 +28,8 @@ class AccountOverview extends React.Component {
             shownAssets: props.viewSettings.get("shownAssets", "active"),
             alwaysShowAssets: [
                 "BTS"
-                // "USD",
-                // "CNY"
+                "BTC",
+                "AUS"
             ],
             hideFishingProposals: true,
             question1: false,
@@ -82,7 +82,7 @@ class AccountOverview extends React.Component {
 
     _changeShownAssets(shownAssets = "active") {
         this.setState({
-            shownAssets
+            shownAssets: shownAssets
         });
         SettingsActions.changeViewSetting({
             shownAssets
@@ -296,6 +296,7 @@ class AccountOverview extends React.Component {
                 coreAsset={this.props.core_asset}
                 coreSymbol={this.props.core_asset.get("symbol")}
                 hiddenAssets={hiddenAssets}
+                shownAssets={shownAssets}
                 orders={orders}
                 account={this.props.account}
                 isMyAccount={this.props.isMyAccount}
@@ -317,6 +318,7 @@ class AccountOverview extends React.Component {
                 coreSymbol={this.props.core_asset.get("symbol")}
                 settings={settings}
                 hiddenAssets={hiddenAssets}
+                shownAssets={shownAssets}
                 orders={orders}
                 account={this.props.account}
                 isMyAccount={this.props.isMyAccount}
