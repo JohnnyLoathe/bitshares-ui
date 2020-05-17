@@ -539,7 +539,7 @@ class AccountPortfolioList extends React.Component {
                 symbol == "DONATE" ||
                 symbol == "BTS" ||
                 symbol == "LTC" ||
-                symbol == "DGB" ||
+                symbol == "DGB"
                 //symbol == "" ||
                 //symbol == "RUBLE" ||
                 //symbol == "BTC" ||
