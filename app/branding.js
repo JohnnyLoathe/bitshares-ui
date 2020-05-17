@@ -100,7 +100,7 @@ export function getDefaultMarket() {
     if (_isTestnet()) {
         return "BTC_TEST";
     }
-    return "BTS_AUTRADEX.BTC";
+    return "BTS_AUTRADEX.AUS";
 }
 
 /**
@@ -112,7 +112,7 @@ export function getMyMarketsBases() {
     if (_isTestnet()) {
         return ["TEST"];
     }
-    return ["BTS", "BTC", "AUS", "AUTX"];
+    return ["BTS", "AUTRADEX.BTC"];
 }
 
 /**
@@ -139,9 +139,10 @@ export function getMyMarketsQuotes() {
         autradexTokens: [
             "autradex.aus",
             "autradex.btc",
+            "autradex.ltc",
             "autradex"
         ],
-        otherTokens: ["CVCOIN", "HERO", "OCT", "HERTZ", "YOYOW"]
+        otherTokens: ["autradex"]
     };
 
     let allTokens = [];
@@ -158,7 +159,7 @@ export function getMyMarketsQuotes() {
  */
 export function getFeaturedMarkets(quotes = []) {
     if (_isTestnet()) {
-        return [["USD", "TEST"]];
+        return [["BTC", "TEST"]];
     }
     return [
         ["BTS", "AUTX"],
@@ -189,7 +190,7 @@ export function getAssetNamespaces() {
  */
 export function getAssetHideNamespaces() {
     // e..g "OPEN.", "bit"
-    return ["BRIDGE."];
+    return ["AUTRADEX."];
 }
 
 /**
