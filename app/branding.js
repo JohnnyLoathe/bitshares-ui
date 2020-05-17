@@ -93,7 +93,7 @@ export function getUnits() {
     if (_isTestnet()) {
         return ["TEST"];
     }
-    return ["BTS", "AUTRADEX.BTC", "AUTRADEX.AUS", "AUTRADEX"];
+    return ["BTS", "BTC", "DOGE", "AUTX"];
 }
 
 export function getDefaultMarket() {
