@@ -5,15 +5,15 @@ import AssetName from "../../Utility/AssetName";
 import LinkToAccountById from "../../Utility/LinkToAccountById";
 import AccountBalance from "../../Account/AccountBalance";
 import ChainTypes from "../../Utility/ChainTypes";
-import GdexCache from "../../../lib/common/GdexCache";
-import {requestDepositAddress} from "../../../lib/common/gdexMethods";
+import AutradexCache from "../../../lib/common/AutradexCache";
+import {requestDepositAddress} from "../../../lib/common/autradexMethods";
 import QRCode from "qrcode.react";
-import GdexWithdrawModal from "./GdexWithdrawModal";
+import AutradexWithdrawModal from "./AutradexWithdrawModal";
 import counterpart from "counterpart";
 import {Modal, Button} from "bitshares-ui-style-guide";
 import PropTypes from "prop-types";
 
-class GdexGatewayInfo extends React.Component {
+class AutradexGatewayInfo extends React.Component {
     static propTypes = {
         // inner_asset_name:               PropTypes.string,
         // outer_asset_name:           PropTypes.string,
@@ -37,7 +37,7 @@ class GdexGatewayInfo extends React.Component {
             isAvailable: true,
             qrcode: ""
         };
-        this.deposit_address_cache = new GdexCache();
+        this.deposit_address_cache = new AutradexCache();
         this._copy = this._copy.bind(this);
         document.addEventListener("copy", this._copy);
 
@@ -450,7 +450,7 @@ class GdexGatewayInfo extends React.Component {
                                 visible={this.state.isQrModalVisible}
                                 onCancel={this.hideQrModal}
                             >
-                                {/*<div className="gdex-gateway">abc</div>*/}
+                                {/*<div className="autradex-gateway">abc</div>*/}
                                 <DepositQrCodeModal text={qrcode} />
                             </Modal>
                         </div>
@@ -576,7 +576,7 @@ class GdexGatewayInfo extends React.Component {
                         footer={null}
                         visible={this.state.isModalVisible}
                     >
-                        <GdexWithdrawModal
+                        <AutradexWithdrawModal
                             hideModal={this.hideModal}
                             account={this.props.account.get("name")}
                             issuer={this.props.issuer_account.get("name")}
@@ -618,4 +618,4 @@ class DepositQrCodeModal extends React.Component {
     }
 }
 
-export default BindToChainState(GdexGatewayInfo);
+export default BindToChainState(AutradexGatewayInfo);
