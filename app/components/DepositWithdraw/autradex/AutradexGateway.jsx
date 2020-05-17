@@ -1,22 +1,22 @@
 import React from "react";
-import {fetchAssets, fetchUserInfo} from "common/gdexMethods";
+import {fetchAssets, fetchUserInfo} from "common/autradexMethods";
 import LoadingIndicator from "../../LoadingIndicator";
 import Translate from "react-translate-component";
-import GdexGatewayInfo from "./GdexGatewayInfo";
+import AutradexGatewayInfo from "./AutradexGatewayInfo";
 import {connect} from "alt-react";
 import SettingsStore from "stores/SettingsStore";
 import SettingsActions from "actions/SettingsActions";
-import GdexCache from "../../../lib/common/GdexCache";
-import GdexHistory from "./GdexHistory";
-import GdexAgreementModal from "./GdexAgreementModal";
+import AutradexCache from "../../../lib/common/AutradexCache";
+import AutradexHistory from "./AutradexHistory";
+import AutradexAgreementModal from "./AutradexAgreementModal";
 import {Modal, Button} from "bitshares-ui-style-guide";
 import counterpart from "counterpart";
 import {
     fetchWithdrawRule,
     userAgreement
-} from "../../../lib/common/gdexMethods";
+} from "../../../lib/common/autradexMethods";
 var NodeRSA = require("node-rsa");
-let gdexPublicKey = new NodeRSA(
+let autradexPublicKey = new NodeRSA(
     "-----BEGIN PUBLIC KEY-----\n" +
         "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCH+QtHPKcWxdL25xL4pCuu16tKh6yPx/TFnd/8\n" +
         "cSt2TC+sPuYsD0h/sy4VKNxhBb7F7U/TLXjMxNcSfPVPjPM3X2LvOlmU9LOEcJGrmlmOOiyO/kws\n" +
@@ -24,7 +24,7 @@ let gdexPublicKey = new NodeRSA(
         "-----END PUBLIC KEY-----"
 );
 
-class GdexGateway extends React.Component {
+class AutradexGateway extends React.Component {
     constructor(props) {
         super();
         const action = props.viewSettings.get(
@@ -47,7 +47,7 @@ class GdexGateway extends React.Component {
             intermediate: null,
             memo_rule: null
         };
-        this.user_info_cache = new GdexCache();
+        this.user_info_cache = new AutradexCache();
 
         this.showAgreement = this.showAgreement.bind(this);
         this.hideAgreement = this.hideAgreement.bind(this);
@@ -78,7 +78,7 @@ class GdexGateway extends React.Component {
         if (state.action == "deposit") {
             firstTimeCoinName = "BTC";
         } else {
-            firstTimeCoinName = "GDEX.BTC";
+            firstTimeCoinName = "AUTRADEX.BTC";
         }
         let firstTimeCoinId = 1002;
         let activeCoinName = cachedCoinName
@@ -250,7 +250,7 @@ class GdexGateway extends React.Component {
         let _this = this;
         result.then(
             function(data) {
-                var intermediate = gdexPublicKey.decryptPublic(
+                var intermediate = autradexPublicKey.decryptPublic(
                     data.transferToAccount,
                     "utf-8"
                 );
@@ -319,16 +319,16 @@ class GdexGateway extends React.Component {
             memo_rule
         } = this.state;
         let issuer = {
-            ticket: "https://support.gdex.io/",
+            ticket: "https://support./",
             qq: "602573197",
-            telgram: "https://t.me/GDEXer"
+            telgram: "https://t.me/er"
         };
         let supportContent = (
             <div>
                 {/*<label className="left-label">Support</label>*/}
                 <br />
                 <br />
-                <Translate content="gateway.support_gdex" />
+                <Translate content="gateway.support_" />
                 <br />
                 <br />
                 <p>
@@ -423,7 +423,7 @@ class GdexGateway extends React.Component {
                     >
                         <br />
                         <div className="grid-block vertical">
-                            <GdexAgreementModal
+                            <AutradexAgreementModal
                                 onCancel={this.hideAgreement}
                                 locale={this.props.settings.get("locale", "en")}
                             />
@@ -584,18 +584,18 @@ class GdexGateway extends React.Component {
                 ) : (
                     <div>
                         <div style={{marginBottom: 15}}>
-                            <GdexGatewayInfo
+                            <AutradexGatewayInfo
                                 account={account}
                                 coin={coin}
                                 issuer_account={intermediate}
                                 user_id={user_info.user_id}
                                 action={this.state.action}
-                                gateway={"gdex"}
+                                gateway={"autradex"}
                                 btsCoin={coin.innerSymbol}
                                 memo_rule={memo_rule}
                             />
                         </div>
-                        <GdexHistory
+                        <AutradexHistory
                             userId={user_info.user_id}
                             userAccount={account.get("name")}
                             assetId={coin[assetId]}
@@ -622,7 +622,7 @@ class GdexGateway extends React.Component {
 }
 
 export default connect(
-    GdexGateway,
+    AutradexGateway,
     {
         listenTo() {
             return [SettingsStore];

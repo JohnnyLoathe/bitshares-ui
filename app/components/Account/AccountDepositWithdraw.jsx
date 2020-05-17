@@ -16,7 +16,7 @@ import AccountStore from "stores/AccountStore";
 import SettingsStore from "stores/SettingsStore";
 import SettingsActions from "actions/SettingsActions";
 import {openledgerAPIs} from "api/apiConfig";
-import RuDexGateway from "../DepositWithdraw/rudex/RuDexGateway";
+import AutradexGateway from "../DepositWithdraw/autradex/AutradexGateway";
 import GatewayStore from "stores/GatewayStore";
 import AccountImage from "../Account/AccountImage";
 import BitsparkGateway from "../DepositWithdraw/bitspark/BitsparkGateway";
@@ -41,7 +41,7 @@ class AccountDepositWithdraw extends React.Component {
         super();
         this.state = {
             olService: props.viewSettings.get("olService", "gateway"),
-            rudexService: props.viewSettings.get("rudexService", "gateway"),
+            autradexService: props.viewSettings.get("autradexService", "gateway"),
             bitsparkService: props.viewSettings.get(
                 "bitsparkService",
                 "gateway"
@@ -71,7 +71,7 @@ class AccountDepositWithdraw extends React.Component {
                 this.props.citadelBackedCoins
             ) ||
             nextState.olService !== this.state.olService ||
-            nextState.rudexService !== this.state.rudexService ||
+            nextState.autradexService !== this.state.autradexService ||
             nextState.bitsparkService !== this.state.bitsparkService ||
             nextState.xbtsxService !== this.state.xbtsxService ||
             nextState.btService !== this.state.btService ||
@@ -95,13 +95,13 @@ class AccountDepositWithdraw extends React.Component {
         });
     }
 
-    toggleRuDEXService(service) {
+    toggleAutradexService(service) {
         this.setState({
-            rudexService: service
+            autradexService: service
         });
 
         SettingsActions.changeViewSetting({
-            rudexService: service
+            autradexService: service
         });
     }
 
@@ -167,7 +167,7 @@ class AccountDepositWithdraw extends React.Component {
 
     renderServices(
         openLedgerGatewayCoins,
-        rudexGatewayCoins,
+        autradexGatewayCoins,
         bitsparkGatewayCoins,
         xbtsxGatewayCoins
     ) {
@@ -177,7 +177,7 @@ class AccountDepositWithdraw extends React.Component {
         let {
             olService,
             btService,
-            rudexService,
+            autradexService,
             bitsparkService,
             xbtsxService,
             citadelService
@@ -257,8 +257,8 @@ class AccountDepositWithdraw extends React.Component {
         });
 
         serList.push({
-            name: "RuDEX (RUDEX.X)",
-            identifier: "RUDEX",
+            name: "AUTRADEX (AUTRADEX.a)",
+            identifier: "AUTRADEX",
             template: (
                 <div className="content-block">
                     <div
@@ -267,12 +267,12 @@ class AccountDepositWithdraw extends React.Component {
                     >
                         <ul className="button-group segmented no-margin">
                             <li
-                                onClick={this.toggleRuDEXService.bind(
+                                onClick={this.toggleAutradexService.bind(
                                     this,
                                     "gateway"
                                 )}
                                 className={
-                                    rudexService === "gateway"
+                                    autradexService === "gateway"
                                         ? "is-active"
                                         : ""
                                 }
@@ -282,12 +282,12 @@ class AccountDepositWithdraw extends React.Component {
                                 </a>
                             </li>
                             <li
-                                onClick={this.toggleRuDEXService.bind(
+                                onClick={this.toggleAutradexService.bind(
                                     this,
                                     "fiat"
                                 )}
                                 className={
-                                    rudexService === "fiat" ? "is-active" : ""
+                                    autradexService === "fiat" ? "is-active" : ""
                                 }
                             >
                                 <a>Fiat</a>
@@ -295,16 +295,16 @@ class AccountDepositWithdraw extends React.Component {
                         </ul>
                     </div>
 
-                    {rudexService === "gateway" && rudexGatewayCoins.length ? (
-                        <RuDexGateway
+                    {autradexService === "gateway" && autradexGatewayCoins.length ? (
+                        <AutradexGateway
                             account={account}
-                            coins={rudexGatewayCoins}
+                            coins={autradexGatewayCoins}
                         />
                     ) : null}
 
-                    {rudexService === "fiat" ? (
+                    {autradexService === "fiat" ? (
                         <div>
-                            <Translate content="gateway.rudex.coming_soon" />
+                            <Translate content="gateway.autradex.coming_soon" />
                         </div>
                     ) : null}
                 </div>
@@ -528,7 +528,7 @@ class AccountDepositWithdraw extends React.Component {
                 return 0;
             });
 
-        let rudexGatewayCoins = this.props.rudexBackedCoins
+        let autradexGatewayCoins = this.props.autradexBackedCoins
             .map(coin => {
                 return coin;
             })
@@ -560,7 +560,7 @@ class AccountDepositWithdraw extends React.Component {
 
         let services = this.renderServices(
             openLedgerGatewayCoins,
-            rudexGatewayCoins,
+            autradexGatewayCoins,
             bitsparkGatewayCoins,
             xbtsxGatewayCoins
         );
@@ -752,8 +752,8 @@ export default connect(
                     "OPEN",
                     []
                 ),
-                rudexBackedCoins: GatewayStore.getState().backedCoins.get(
-                    "RUDEX",
+                autradexBackedCoins: GatewayStore.getState().backedCoins.get(
+                    "AUTRADEX",
                     []
                 ),
                 bitsparkBackedCoins: GatewayStore.getState().backedCoins.get(

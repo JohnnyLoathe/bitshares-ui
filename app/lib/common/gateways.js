@@ -4,7 +4,7 @@
  */
 
 import {
-    rudexAPIs,
+    autradexAPIs,
     bitsparkAPIs,
     openledgerAPIs,
     cryptoBridgeAPIs,
@@ -99,11 +99,11 @@ export const availableGateways = {
         landing: "https://dex.openledger.io/news/ol-dex-is-closing-all-activities/",
         wallet: "Shutdown"
     },
-    RUDEX: {
-        id: "RUDEX",
-        name: "RuDEX",
-        baseAPI: rudexAPIs,
-        isEnabled: _isEnabled("RUDEX"),
+    AUTRADEX: {
+        id: "AUTRADEX",
+        name: "AUTRADEX",
+        baseAPI: autradexAPIs,
+        isEnabled: _isEnabled("AUTRADEX"),
         isSimple: true,
         selected: false,
         simpleAssetGateway: true,
@@ -117,8 +117,8 @@ export const availableGateways = {
             enabled: false,
             selected: false
         },
-        landing: "https://rudex.org/",
-        wallet: "https://market.rudex.org/"
+        landing: "https://autradex.systems/",
+        wallet: "https://market.autradex.systems/"
     },
     SPARKDEX: {
         id: "SPARKDEX",
