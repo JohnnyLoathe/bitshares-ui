@@ -140,6 +140,7 @@ export function getMyMarketsQuotes() {
         "autradex.aus",
         "autradex.btc",
 		"autradex"
+        ],
         otherTokens: ["CVCOIN", "HERO", "OCT", "HERTZ", "YOYOW"]
     };
 
