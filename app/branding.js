@@ -112,7 +112,7 @@ export function getMyMarketsBases() {
     if (_isTestnet()) {
         return ["TEST"];
     }
-    return ["BTS", "AUTRADEX.BTC"];
+    return ["AUTRADEX.BTC", "BTS"];
 }
 
 /**
@@ -162,7 +162,7 @@ export function getFeaturedMarkets(quotes = []) {
         return [["BTC", "TEST"]];
     }
     return [
-        ["BTS", "AUTX"],
+        ["BTS", "AUTRADEX.BTC"],
 
         ["AUTRADEX", "AUTRADEX"],
         ["AUTRADEX", "AUTRADEX.AUS"]
@@ -200,7 +200,7 @@ export function getAssetHideNamespaces() {
  */
 export function allowedGateway(gateway) {
     const allowedGateways = [
-        "AUTRADEX"
+        "AUTRADEX."
     ];
     if (!gateway) {
         // answers the question: are any allowed?
