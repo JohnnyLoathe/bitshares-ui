@@ -997,7 +997,7 @@ class AccountPortfolioList extends React.Component {
             const hasBalance = !!balanceObject.get("balance");
 
             // Vesting balances
-            let vestingBalances = [];
+/*            let vestingBalances = [];
 
             const vbs = this.props.account.get("vesting_balances");
             vbs.forEach(vb => {
@@ -1029,7 +1029,7 @@ class AccountPortfolioList extends React.Component {
                     }
                 }
             });
-
+*/
             const backedCoin = getBackedCoin(
                 asset.get("symbol"),
                 this.props.backedCoins
